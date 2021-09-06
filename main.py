@@ -14,7 +14,8 @@ b = 3
 
 print ("k =", k, "b =",b)
 print ("k_new =", round(k_new,2), "b_new =",round(b_new,2))
-plt.scatter(x, y)
-plt.plot(x, k*x + b,'r')
-plt.plot(x, k_new*x + b_new,'g')
+plt.scatter(x, y, c="b", label = "Scatter Plot")
+plt.plot(x, k*x + b,'r',  label = "Regression Line")
+plt.plot(x, k_new*x + b_new,'g',  label = "New regression Line")
+plt.legend()
 plt.show()
