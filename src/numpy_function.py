@@ -20,3 +20,9 @@ def coeff(x,y):
     k_new = np.polyfit(x,y,1)[0]
     b_new = np.polyfit(x,y,1)[1]
     return k_new, b_new
+
+def new_coeff(x,y,N):
+    for i in range(N):
+        k = (N * sum(x * y) - sum(x) * sum(y)) / (N * sum(x * x) - (sum(x)) ** 2)
+        b = (sum(y) - k * sum(x)) / N
+        return k, b

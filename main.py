@@ -1,5 +1,5 @@
 import numpy as np
-from src.numpy_function import combination, generation_points, line, coeff
+from src.numpy_function import combination, generation_points, line, coeff,new_coeff
 import matplotlib.pyplot as plt
 
 x_min = -1
@@ -9,7 +9,7 @@ k = -0.5
 b = 3
 
 (x, y) = generation_points(-1,1,-0.5,2,300)
-(k_new, b_new) = coeff(x,y)
+(k_new, b_new) = new_coeff(x, y, N)
 
 
 print ("k =", k, "b =",b)
