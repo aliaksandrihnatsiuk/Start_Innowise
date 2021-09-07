@@ -1,21 +1,22 @@
 import numpy as np
-from src.numpy_function import combination, generation_points, line, coeff,new_coeff
+from src.numpy_function import combination, generation_points, line, coeff_3,new_coeff
 import matplotlib.pyplot as plt
 
-x_min = -1
-x_max = 1
-N = 300
-k = -0.5
-b = 3
+N = 10
 
-(x, y) = generation_points(-1,1,-0.5,2,300)
-(k_new, b_new) = new_coeff(x, y, N)
+w0 = 1
+w1 = 1
+w2 = 0.5
+W = np.array([w0, w1, w2]).reshape(3,1)
+
+x0 = np.ones(N)
+x1 = np.linspace(1,2,N)
+x2= np.linspace(-1,2,N)
+
+X = np.array([x0, x1, x2]).T
+Y = w0 + w1*x1 + x2*w2 + + np.random.normal(0,1,N)
+print ('Coefficients, w0, w1, w2')
+print(coeff_3(X, Y))
 
 
-print ("k =", k, "b =",b)
-print ("k_new =", round(k_new,2), "b_new =",round(b_new,2))
-plt.scatter(x, y, c="b", label = "Scatter Plot")
-plt.plot(x, k*x + b,'r',  label = "Regression Line")
-plt.plot(x, k_new*x + b_new,'g',  label = "New regression Line")
-plt.legend()
-plt.show()
+

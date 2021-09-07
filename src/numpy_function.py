@@ -26,3 +26,8 @@ def new_coeff(x,y,N):
         k = (N * sum(x * y) - sum(x) * sum(y)) / (N * sum(x * x) - (sum(x)) ** 2)
         b = (sum(y) - k * sum(x)) / N
         return k, b
+
+def coeff_3(X, Y):
+    w_new = np.dot((np.linalg.inv(np.dot(X.T,X))), np.dot(X.T,Y))
+
+    return w_new
