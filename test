@@ -1,0 +1,44 @@
+    N = 100
+    w0 = 0.2
+    w1 = 0.2
+    w2 = 0.5
+
+    W = np.array([w0, w1, w2]).reshape(3,1)
+
+    x0 = np.ones(N*N)
+    X1 = np.linspace(1,2,N) + np.random.normal(0, 0.1, N)
+    X2 = np.linspace(-1,2,N) + np.random.normal(0, 6, N)
+
+    X = np.array(np.meshgrid(X1,X2)).T.reshape(-1,2)
+
+    X = np.hstack([x0[:,np.newaxis], X])
+    #X = np.array([x0, X1, X2]).T
+    #print(X)
+
+    Y_data = X.dot(W) + np.random.normal(0, 6, N*N)
+
+    print(Y_data)
+    #print ('Coefficients, w0, w1, w2')
+    #print(coeff_3(X, None))
+    # Draw Plot3D
+
+    def z_function(X, W):
+        return X.dot(W)
+
+
+
+
+    #X1_, X2_ = np.meshgrid(X1, X2)
+    #print(X1, X2)
+    Z = z_function(X,W)
+    ax = plt.axes(projection='3d')
+
+    ax.scatter(X[:, 1], X[:, 2], Z)
+    #for x1_, x2_, y_data_ in zip(X1, X2, Y_data):
+    #    ax.scatter(x1_, x2_, y_data_, c='r')
+    ax.scatter(X[:, 1], X[:, 2], Y_data[:,np.newaxis])
+
+    ax.set_xlabel('x1')
+    ax.set_ylabel('x2')
+    ax.set_zlabel('y')
+    plt.show()
