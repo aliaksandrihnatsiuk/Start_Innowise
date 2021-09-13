@@ -13,10 +13,7 @@ def data_creation(w0, w1, w2, N):
     return W, X, y
 
 def cost_function(X, y, theta):
-    predictions = X.dot(theta)
-    errors = np.subtract(predictions, y)
-    sqrErrors = np.square(errors)
-    J = 1 / (2 * m) * errors.T.dot(errors)
+    J = np.sum((X.dot(theta) -y) ** 2) / (2 * m)
     return J
 
 def gradient_descent(X, y, theta, alpha, iterations):
@@ -46,5 +43,13 @@ m = len(y)
 print(m)
 
 theta, cost_history = gradient_descent(X, y, theta, alpha, iterations)
-print('Final value of theta =', theta)
 
+J = cost_function(X, y, theta)
+print (J)
+print('Final value of theta =', theta)
+plt.plot(range(1, iterations +1), cost_history, color ='blue')
+plt.rcParams["figure.figsize"] = (10,6)
+plt.grid()
+plt.xlabel("iterations")
+plt.ylabel("cost (J)")
+plt.show()
