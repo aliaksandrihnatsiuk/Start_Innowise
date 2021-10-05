@@ -32,7 +32,7 @@ def gradient_descent(X, y, theta, alpha, iterations):
 
 
 W, X, y = data_creation(0.6, 0.3, 1, 3)
-
+print(X,y)
 
 theta = np.array([0.6, 0.2, 1])
 # start parameters
@@ -44,9 +44,9 @@ print(m)
 
 theta, cost_history = gradient_descent(X, y, theta, alpha, iterations)
 
-J = cost_function(X, y, theta)
-print (J)
+print(cost_history)
 print('Final value of theta =', theta)
+
 plt.plot(range(1, iterations +1), cost_history, color ='blue')
 plt.rcParams["figure.figsize"] = (10,6)
 plt.grid()
